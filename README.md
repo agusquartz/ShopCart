@@ -17,3 +17,5 @@ This is a Java program that simulates a shopping cart for DVDs. It allows users 
 - Run the Main class to start the program.
 - More usages not available yet.
 
+# Technologies
+- JDK 17
