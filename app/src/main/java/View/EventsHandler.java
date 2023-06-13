@@ -2,6 +2,7 @@
 package View;
 
 import Controller.ControllerClient;
+import Controller.ControllerSummary;
 import Repository.Client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,11 +21,13 @@ public class EventsHandler implements ActionListener{
     private HashMap<String, Supplier<Object>> supplier;
     private static EventsHandler instance;
     private ControllerClient controllerClient;
+    private ControllerSummary controllerSummary;
     
     private EventsHandler(){
         methods = new HashMap();
         supplier = new HashMap();
         controllerClient = new ControllerClient();
+        controllerSummary = new ControllerSummary();
     }
     
     static{
@@ -55,7 +58,7 @@ public class EventsHandler implements ActionListener{
                 methods.get("showPanelCart").run();
                 break;
             case "Summary":
-                methods.get("showPanelSummary").run();
+                refreshTableSummary((TableModified)supplier.get("getSummaryTable").get());
                 break;
             case "Users":
                 TableModified tableUsers = (TableModified)supplier.get("getClientsTable").get();
@@ -86,7 +89,14 @@ public class EventsHandler implements ActionListener{
             case "Save":
                 PanelUserEdit panelUserEdit1 = (PanelUserEdit)supplier.get("getPanelUserEdit").get();
                 controllerClient.editClient(panelUserEdit1);
-                methods.get("showPanelUsers").run();
+                refreshTableUsers((TableModified)supplier.get("getClientsTable").get());
+                break;
+            case "Create":
+                PanelUserCreate panelUserCreate = (PanelUserCreate)supplier.get("getPanelUserCreate").get();
+                if(!(panelUserCreate.getIDNumber().equals("") || panelUserCreate.getIDNumber().equals(" "))){
+                    controllerClient.createClient(panelUserCreate);
+                }
+                refreshTableUsers((TableModified)supplier.get("getClientsTable").get());
                 break;
             case "Cancel":
                 methods.get("showPanelUsers").run();
@@ -106,6 +116,11 @@ public class EventsHandler implements ActionListener{
     private void refreshTableUsers(TableModified table){
         controllerClient.loadClients(table);
         methods.get("showPanelUsers").run();
+    }
+    
+    private void refreshTableSummary(TableModified table){
+        controllerSummary.loadSummary(table);
+        methods.get("showPanelSummary").run();
     }
     
     private void updatePanelUserEdit(PanelUserEdit panel, Client client){

@@ -30,7 +30,7 @@ public class Background extends JPanel{
         
         panelCart = new PanelCart();
         
-        panelSummary = new PanelSummary();
+        panelSummary = new PanelSummary(color);
         
         panelUsers = new PanelUsers(color);
         
@@ -50,9 +50,14 @@ public class Background extends JPanel{
         
         
         eventsHandler.addSupplier("getPanelUserEdit", () -> getPanelUserEdit());
+        eventsHandler.addSupplier("getPanelUserCreate", () -> getPanelUserCreate());
     }
     
     private PanelUserEdit getPanelUserEdit(){
         return panelUserEdit;
+    }
+    
+    private PanelUserCreate getPanelUserCreate(){
+        return panelUserCreate;
     }
 }

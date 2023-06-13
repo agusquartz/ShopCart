@@ -4,6 +4,7 @@ package Controller;
 import Repository.Client;
 import Repository.Repository;
 import View.EventsHandler;
+import View.PanelUserCreate;
 import View.PanelUserEdit;
 import View.TableModified;
 import java.util.TreeMap;
@@ -14,12 +15,11 @@ import javax.swing.table.DefaultTableModel;
  * @author agustin
  */
 public class ControllerClient {
-    private final Repository REPOSITORY;
-    private DefaultTableModel mode;
+    private final Repository REPOSITORY = Repository.getInstance();
     private EventsHandler eventsHandler = EventsHandler.getInstance();
+    private DefaultTableModel mode;
     
     public ControllerClient(){
-        this.REPOSITORY = Repository.getInstance();
     }
     
     public Client searchClient(String idNumber){
@@ -40,10 +40,11 @@ public class ControllerClient {
         client.setSurname(panel.getSurname());
     }
     
-    public void createClient(String name, String surname, String idNumber,
-            String age, String email, String phoneNumber, String city){
-        Client client = new Client(idNumber, name, surname,  age, email, phoneNumber, city);
-        REPOSITORY.getClients().put(idNumber, client);
+    public void createClient(PanelUserCreate panel){
+        Client client = new Client(panel.getIDNumber(), panel.getName(),
+                panel.getSurname(),  panel.getAge(), panel.getEmail(),
+                panel.getPhone(), panel.getCity());
+        REPOSITORY.getClients().put(panel.getIDNumber(), client);
     }
     
     public void deleteClient(String idNumber){

@@ -119,7 +119,7 @@ public abstract class PanelUser extends JPanel{
         configTextField(textFieldEmail, "Email", background, Color.BLACK, gbc);
         gbc.gridx = 0;
         gbc.gridy = 4;
-        this.add(textFieldAge, gbc);
+        this.add(textFieldEmail, gbc);
         
         textFieldIDCard = new JTextField();
         configTextField(textFieldIDCard, "ID Number", background, Color.BLACK, gbc);
@@ -162,6 +162,60 @@ public abstract class PanelUser extends JPanel{
         
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
+    }
+    
+    public void setName(String name){
+        this.getTextFieldName().setText(name);
+    }
+    
+    public void setSurname(String surname){
+        this.getTextFieldSurname().setText(surname);
+    }
+    
+    public void setIDNumber(String idNumber){
+        this.getTextFieldIDCard().setText(idNumber);
+        this.getTextFieldIDCard().setEditable(false);
+    }
+    public void setEmail(String email){
+        this.getTextFieldEmail().setText(email);
+    }
+    public void setAge(String age){
+        this.getTextFieldAge().setText(age);
+    }
+    
+    public void setPhone(String phone){
+        this.getTextFieldPhone().setText(phone);
+    }
+    
+    public void setCity(String city){
+        this.getTextFieldCity().setText(city);
+    }
+    
+    
+    public String getName(){
+        return this.getTextFieldName().getText();
+    }
+    
+    public String getSurname(){
+        return this.getTextFieldSurname().getText();
+    }
+    
+    public String getIDNumber(){
+        return this.getTextFieldIDCard().getText();
+    }
+    public String getEmail(){
+        return this.getTextFieldEmail().getText();
+    }
+    public String getAge(){
+        return this.getTextFieldAge().getText();
+    }
+    
+    public String getPhone(){
+        return this.getTextFieldPhone().getText();
+    }
+    
+    public String getCity(){
+        return this.getTextFieldCity().getText();
     }
     
 }
