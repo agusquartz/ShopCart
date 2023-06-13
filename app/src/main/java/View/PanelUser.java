@@ -7,7 +7,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,6 +21,8 @@ import javax.swing.border.TitledBorder;
  * @author agustin
  */
 public abstract class PanelUser extends JPanel{
+    private JTextField textFieldEmail;
+    private JTextField textFieldAge;
     private JTextField textFieldName;
     private JTextField textFieldSurname;
     private JTextField textFieldIDCard;
@@ -32,8 +33,10 @@ public abstract class PanelUser extends JPanel{
     private ButtonSquare buttonContinue;
     private final Dimension TEXTFIELDDIMENSION = new Dimension(150, 40);
     private GridBagConstraints gbc = new GridBagConstraints();
+    private EventsHandler eventsHandler;
     
-    public PanelUser(String title, Color background){
+    public PanelUser(String title, Color background, EventsHandler eventsHandler){
+        this.eventsHandler = eventsHandler;
         this.setLayout(new GridBagLayout());
         this.setBackground(background);
         
@@ -66,24 +69,32 @@ public abstract class PanelUser extends JPanel{
         return buttonCancel;
     }
 
+    public JTextField getTextFieldEmail() {
+        return textFieldEmail;
+    }
+
+    public JTextField getTextFieldAge() {
+        return textFieldAge;
+    }
+
     public ButtonSquare getButtonContinue() {
         return buttonContinue;
     }
     
     private void build(String title, Color background){ 
         
-        buttonCancel = new ButtonSquare();
+        buttonCancel = new ButtonSquare(eventsHandler);
         buttonCancel.setText("Cancel");
         buttonCancel.setPreferredSize(TEXTFIELDDIMENSION);
         gbc.gridx = 0;
-        gbc.gridy = 6;
+        gbc.gridy = 8;
         this.add(buttonCancel, gbc);
         
-        buttonContinue = new ButtonSquare();
+        buttonContinue = new ButtonSquare(eventsHandler);
         buttonContinue.setText("Continue");
         buttonContinue.setPreferredSize(TEXTFIELDDIMENSION);
         gbc.gridx = 1;
-        gbc.gridy = 6;
+        gbc.gridy = 8;
         this.add(buttonContinue, gbc); 
         
         textFieldName = new JTextField();
@@ -98,22 +109,34 @@ public abstract class PanelUser extends JPanel{
         gbc.gridy = 2;
         this.add(textFieldSurname, gbc);
         
+        textFieldAge = new JTextField();
+        configTextField(textFieldAge, "Age", background, Color.BLACK, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        this.add(textFieldAge, gbc);
+        
+        textFieldEmail = new JTextField();
+        configTextField(textFieldEmail, "Email", background, Color.BLACK, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        this.add(textFieldAge, gbc);
+        
         textFieldIDCard = new JTextField();
         configTextField(textFieldIDCard, "ID Number", background, Color.BLACK, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 5;
         this.add(textFieldIDCard, gbc);
         
         textFieldPhone = new JTextField();
         configTextField(textFieldPhone, "Phone Number", background, Color.BLACK, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 4;
+        gbc.gridy = 6;
         this.add(textFieldPhone, gbc);
         
         textFieldCity = new JTextField();
         configTextField(textFieldCity, "City", background, Color.BLACK, gbc);
         gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 7;
         this.add(textFieldCity, gbc);       
         
         labelTittle = new JLabel(title, SwingConstants.CENTER);

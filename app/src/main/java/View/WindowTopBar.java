@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
@@ -22,12 +23,14 @@ public class WindowTopBar extends JPanel{
     private int xPositionMouse;
     private int yPositionMouse;
     private JLabel labelUserType;
+    private EventsHandler eventsHandler;
     
     
-    public WindowTopBar(Window window){
+    public WindowTopBar(Window window, EventsHandler eventsHandler){
         WINDOWWIDTH = window.getWidth();
         setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(WINDOWWIDTH, HEIGHT));
+        this.eventsHandler = eventsHandler;
         setBackground(Color.decode("#29323C"));
         
         labelUserType = new JLabel(" Administrator");
@@ -35,7 +38,7 @@ public class WindowTopBar extends JPanel{
         labelUserType.setFont(new Font("Monospaced", Font.PLAIN, 10));
         add(labelUserType, BorderLayout.LINE_START);
         
-        closeButton = new ButtonCloseWindow(window, WINDOWWIDTH, HEIGHT);
+        closeButton = new ButtonCloseWindow(window, WINDOWWIDTH, HEIGHT, eventsHandler);
         add(closeButton, BorderLayout.LINE_END);
         
         draggedEffect(window);

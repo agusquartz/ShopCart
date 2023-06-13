@@ -9,7 +9,8 @@ import java.awt.Color;
  */
 public class PanelUserCreate extends PanelUser{
     
-    public PanelUserCreate(Color background){
-        super("Create User", background);
+    public PanelUserCreate(Color background, EventsHandler eventsHandler){
+        super("Create User", background, eventsHandler);
+        this.getButtonContinue().setText("Create");
     }
 }

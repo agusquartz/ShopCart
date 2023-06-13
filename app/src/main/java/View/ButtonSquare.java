@@ -17,10 +17,13 @@ public class ButtonSquare extends ButtonBase{
 //    private Color color1 = Color.decode("#29323C"); // Darker
 //    private Color color2 = Color.decode("#485563"); // Lighter
 //    private boolean hover;
+    private EventsHandler eventsHandler;
     
     
-    public ButtonSquare(){
+    public ButtonSquare(EventsHandler eventsHandler){
         super();
+        this.eventsHandler = eventsHandler;
+        this.addActionListener(eventsHandler);
     }
     
     /**

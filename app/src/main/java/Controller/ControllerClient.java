@@ -3,6 +3,11 @@ package Controller;
 
 import Repository.Client;
 import Repository.Repository;
+import View.EventsHandler;
+import View.PanelUserEdit;
+import View.TableModified;
+import java.util.TreeMap;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -10,6 +15,8 @@ import Repository.Repository;
  */
 public class ControllerClient {
     private final Repository REPOSITORY;
+    private DefaultTableModel mode;
+    private EventsHandler eventsHandler = EventsHandler.getInstance();
     
     public ControllerClient(){
         this.REPOSITORY = Repository.getInstance();
@@ -19,16 +26,49 @@ public class ControllerClient {
         return this.REPOSITORY.getClients().get(idNumber);
     }
     
-    public static void main(String[] args){
-        ControllerClient controlerclient = new ControllerClient();
-        System.out.println("\nActions leidos de JSON");
-        
-        controlerclient.REPOSITORY.getActions().forEach((clave, valor) -> System.out.println("Clave: " + clave + "\n" + "Valores: \n" + valor));
-        controlerclient.REPOSITORY.saveActions();
-//        controlerclient.REPOSITORY.getMovies().forEach((clave, valor) -> System.out.println(clave + ":" + valor));
-//        controlerclient.REPOSITORY.saveMovies();
-//        controlerclient.REPOSITORY.getClients().forEach((clave, valor) -> System.out.println(clave + ":" + valor));
-//        controlerclient.REPOSITORY.saveClients();
+    public int amountOfClients(){
+        return this.REPOSITORY.getClients().size();
+    }
+    
+    public void editClient(PanelUserEdit panel){
+        Client client = REPOSITORY.searchClient(panel.getIDNumber());
+        client.setAge(panel.getAge());
+        client.setEmail(panel.getEmail());
+        client.setPhoneNumber(panel.getPhone());
+        client.setCity(panel.getCity());
+        client.setName(panel.getName());
+        client.setSurname(panel.getSurname());
+    }
+    
+    public void createClient(String name, String surname, String idNumber,
+            String age, String email, String phoneNumber, String city){
+        Client client = new Client(idNumber, name, surname,  age, email, phoneNumber, city);
+        REPOSITORY.getClients().put(idNumber, client);
+    }
+    
+    public void deleteClient(String idNumber){
+        REPOSITORY.getClients().remove(idNumber);
+    }
+    
+    public void save(){
+        REPOSITORY.saveClients();
+    }
+    
+    /**
+     * Clean the Clients Table and Add all the clients with their Data in it
+     * @param table 
+     */
+    public void loadClients(TableModified table){
+        TreeMap<String, Client> clients = REPOSITORY.getClients();
+        mode = (DefaultTableModel) table.getModel();
+        mode.setRowCount(0);
+        clients.forEach((key, value) -> {
+            mode.addRow(new Object[]{
+                key, value.getName(), value.getSurname(), value.getAge(),
+                value.getPhoneNumber(), value.getEmail(), value.getCity(),
+                value.isCanRent()
+            });
+        });
     }
     
 }

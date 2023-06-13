@@ -62,6 +62,10 @@ public class Repository {
         return this.movies.get(name);
     }
     
+    public Client searchClient(String idNumber){
+        return this.clients.get(idNumber);
+    }
+    
     public Repository saveClients(){
         jsonClients.saveToJSONFile();
         return this;
