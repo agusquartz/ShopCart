@@ -40,11 +40,11 @@ public class Background extends JPanel{
         
         panelUserEdit = new PanelUserEdit(new Color(204, 204, 204), EventsHandler.getInstance());
         
+        this.add(panelSettings, "panelSettings");
         this.add(panelShop, "panelShop");
         this.add(panelCart, "panelCart");
         this.add(panelSummary, "panelSummary");
         this.add(panelUsers, "panelUsers");
-        this.add(panelSettings, "panelSettings");
         this.add(panelUserCreate, "panelUserCreate");
         this.add(panelUserEdit, "panelUserEdit");
         
@@ -53,10 +53,18 @@ public class Background extends JPanel{
         eventsHandler.addSupplier("getPanelUserCreate", () -> getPanelUserCreate());
     }
     
+    /**
+     * Returns the panel where you can edit a client's data
+     * @return 
+     */
     private PanelUserEdit getPanelUserEdit(){
         return panelUserEdit;
     }
     
+    /**
+     * Returns the panel where you can create a new user
+     * @return 
+     */
     private PanelUserCreate getPanelUserCreate(){
         return panelUserCreate;
     }

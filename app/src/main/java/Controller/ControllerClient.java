@@ -22,14 +22,27 @@ public class ControllerClient {
     public ControllerClient(){
     }
     
+    /**
+     * Search and returns a client
+     * @param idNumber
+     * @return 
+     */
     public Client searchClient(String idNumber){
         return this.REPOSITORY.getClients().get(idNumber);
     }
     
+    /**
+     * Returns how many clients there are in the system
+     * @return 
+     */
     public int amountOfClients(){
         return this.REPOSITORY.getClients().size();
     }
     
+    /**
+     * Edit a client's data
+     * @param panel 
+     */
     public void editClient(PanelUserEdit panel){
         Client client = REPOSITORY.searchClient(panel.getIDNumber());
         client.setAge(panel.getAge());
@@ -40,6 +53,10 @@ public class ControllerClient {
         client.setSurname(panel.getSurname());
     }
     
+    /**
+     * Creates a new client
+     * @param panel 
+     */
     public void createClient(PanelUserCreate panel){
         Client client = new Client(panel.getIDNumber(), panel.getName(),
                 panel.getSurname(),  panel.getAge(), panel.getEmail(),
@@ -47,10 +64,17 @@ public class ControllerClient {
         REPOSITORY.getClients().put(panel.getIDNumber(), client);
     }
     
+    /**
+     * Removes a client from the system
+     * @param idNumber 
+     */
     public void deleteClient(String idNumber){
         REPOSITORY.getClients().remove(idNumber);
     }
     
+    /**
+     * Save the clients data to local (JSON format)
+     */
     public void save(){
         REPOSITORY.saveClients();
     }

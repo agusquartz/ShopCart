@@ -2,6 +2,7 @@
 package View;
 
 import Controller.ControllerClient;
+import Controller.ControllerMovies;
 import Controller.ControllerSummary;
 import Repository.Client;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.function.Supplier;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,12 +24,14 @@ public class EventsHandler implements ActionListener{
     private static EventsHandler instance;
     private ControllerClient controllerClient;
     private ControllerSummary controllerSummary;
+    private ControllerMovies controllerMovies;
     
     private EventsHandler(){
         methods = new HashMap();
         supplier = new HashMap();
         controllerClient = new ControllerClient();
         controllerSummary = new ControllerSummary();
+        controllerMovies = new ControllerMovies();
     }
     
     static{
@@ -49,16 +53,31 @@ public class EventsHandler implements ActionListener{
         switch(eventSource){
             case "X":
                 controllerClient.save();
+                controllerMovies.saveMovies();
+                controllerSummary.saveSummary();
                 System.exit(0);
                 break;
             case "Shop":
-                methods.get("showPanelShop").run();
+                refreshTableShop((TableModified)supplier.get("getShopTable").get());
                 break;
             case "Cart":
                 methods.get("showPanelCart").run();
                 break;
             case "Summary":
                 refreshTableSummary((TableModified)supplier.get("getSummaryTable").get());
+                ((JLabel)supplier.get("getLabelMoney").get()).setText("Total: $" + controllerSummary.getTotalMoney());
+                break;
+            case "Return":
+                TableModified tableSummary = (TableModified)supplier.get("getSummaryTable").get();
+                DefaultTableModel modelSummary = (DefaultTableModel)tableSummary.getModel();
+                if((modelSummary.getValueAt(tableSummary.getSelectedRow(), 1).toString()).equals("false")){
+                    controllerSummary.modifyStatus(
+                            modelSummary.getValueAt(
+                                tableSummary.getSelectedRow(), 0).toString(),
+                            modelSummary.getValueAt(
+                                tableSummary.getSelectedRow(), 2).toString());
+                }
+                refreshTableSummary(tableSummary);
                 break;
             case "Users":
                 TableModified tableUsers = (TableModified)supplier.get("getClientsTable").get();
@@ -111,6 +130,11 @@ public class EventsHandler implements ActionListener{
     
     public void addSupplier(String name, Supplier<Object> metodo){
         supplier.put(name, metodo);
+    }
+    
+    private void refreshTableShop(TableModified table){
+        controllerMovies.loadMovies(table);
+        methods.get("showPanelShop").run();
     }
     
     private void refreshTableUsers(TableModified table){

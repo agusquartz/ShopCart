@@ -74,6 +74,18 @@ public class Action {
     public boolean isAvailable() {
         return available;
     }
+
+    public void setRentedDate(String rentedDate) {
+        this.rentedDate = rentedDate;
+    }
+
+    public void setReturnedDate(String returnedDate) {
+        this.returnedDate = returnedDate;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
     
     public HashMap<String, String> toHashMap(){
         return new HashMap<String, String>(){{

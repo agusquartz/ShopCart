@@ -2,10 +2,12 @@
 package Controller;
 
 import Repository.Action;
-import Repository.Client;
+import java.time.LocalDate;
 import Repository.Repository;
 import View.EventsHandler;
 import View.TableModified;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
@@ -18,9 +20,20 @@ public class ControllerSummary {
     private final Repository REPOSITORY = Repository.getInstance();
     private EventsHandler eventsHandler = EventsHandler.getInstance();
     private DefaultTableModel mode;
+    private static int moneyCounter;
+    private ControllerMovies controllerMovies;
+    private ControllerClient controllerClient;
     
     public ControllerSummary(){
-        
+        controllerClient = new ControllerClient();
+        controllerMovies = new ControllerMovies();
+    }
+    
+    /**
+     * Save the summary data to local (JSON format)
+     */
+    public void saveSummary(){
+        REPOSITORY.saveActions();
     }
     
     /**
@@ -39,6 +52,39 @@ public class ControllerSummary {
                 });
             });
         });
+    }
+    
+    /**
+     * Modifies the status of the product to available, the client can rent again
+     * and the returned date is saved to the summary
+     * @param clientID
+     * @param movieName 
+     */
+    public void modifyStatus(String clientID, String movieName){
+        HashMap<String, ArrayList<Action>> actions = REPOSITORY.getActions();
+        actions.get(clientID).forEach(action -> {
+            if(action.getName().equals(movieName) && !(action.isAvailable())){
+                action.setAvailable(true);
+                action.setReturnedDate(DateTimeFormatter.ofPattern("dd-MM-YYYY").format(LocalDate.now()));
+                controllerMovies.searchMovie(movieName).setAvailable(true);
+                controllerClient.searchClient(clientID).setCanRent(true);
+            }
+        });
+    }
+    
+    /**
+     * Returns the total money earned until now
+     * @return 
+     */
+    public int getTotalMoney(){
+        HashMap<String, ArrayList<Action>> actions = REPOSITORY.getActions();
+        moneyCounter = 0;
+        actions.forEach((key, value) -> {
+            value.forEach(e -> {
+                moneyCounter += Integer.parseInt(e.getPrice());
+            });
+        });
+        return moneyCounter;
     }
     
 }

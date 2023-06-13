@@ -19,12 +19,14 @@ public class PanelSummary extends JPanel{
     private JLabel labelTitle;
     private TableModified tableModified;
     private JScrollPane jScrollPane;
+    private PanelSummaryBottomBar panelSummaryBottomBar;
     private EventsHandler eventsHandler = EventsHandler.getInstance();
     
     public PanelSummary(Color color){
         this.setBackground(color);
         this.setLayout(new BorderLayout());
         this.labelTitle = new JLabel("Summary");
+        this.panelSummaryBottomBar = new PanelSummaryBottomBar(color, eventsHandler);
         
         tableConfig();
         
@@ -35,8 +37,8 @@ public class PanelSummary extends JPanel{
         eventsHandler.addSupplier("getSummaryTable", () -> returnTable());
         
         this.add(labelTitle, BorderLayout.PAGE_START);
-        this.add(jScrollPane, BorderLayout.CENTER);
-        
+        this.add(panelSummaryBottomBar, BorderLayout.PAGE_END);
+        this.add(jScrollPane, BorderLayout.CENTER);        
     }
     
     private void tableConfig(){
