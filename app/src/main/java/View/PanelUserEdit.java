@@ -12,7 +12,7 @@ public class PanelUserEdit extends PanelUser{
     
     
     public PanelUserEdit(Color background, EventsHandler eventsHandler){
-        super("Edit User", background, eventsHandler);
+        super("Edit Client", background, eventsHandler);
         this.getButtonContinue().setText("Save");
     }
     

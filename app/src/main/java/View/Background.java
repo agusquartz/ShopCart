@@ -14,7 +14,8 @@ import javax.swing.JPanel;
  */
 public class Background extends JPanel{
     private PanelShop panelShop;
-    private PanelCart panelCart;
+    private PanelShopAddMovie panelShopAddMovie;
+    private PanelPolicy panelPolicy;
     private PanelSummary panelSummary;
     private PanelUsers panelUsers;
     private PanelSettings panelSettings;
@@ -27,8 +28,9 @@ public class Background extends JPanel{
         this.setBackground(color);
         
         panelShop = new PanelShop(color);
+        panelShopAddMovie = new PanelShopAddMovie("Add Movie", new Color(204, 204, 204));
         
-        panelCart = new PanelCart();
+        panelPolicy = new PanelPolicy();
         
         panelSummary = new PanelSummary(color);
         
@@ -42,7 +44,8 @@ public class Background extends JPanel{
         
         this.add(panelSettings, "panelSettings");
         this.add(panelShop, "panelShop");
-        this.add(panelCart, "panelCart");
+        this.add(panelShopAddMovie, "panelAddMovie");
+        this.add(panelPolicy, "panelPolicy");
         this.add(panelSummary, "panelSummary");
         this.add(panelUsers, "panelUsers");
         this.add(panelUserCreate, "panelUserCreate");

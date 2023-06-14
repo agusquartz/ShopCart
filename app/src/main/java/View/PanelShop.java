@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author agustin
  */
 public class PanelShop extends JPanel{
+    private PanelShopBottomBar panelShopBottomBar;
     private JLabel labelTitle;
     private TableModified tableModified;
     private JScrollPane jScrollPane;
@@ -25,6 +26,7 @@ public class PanelShop extends JPanel{
         this.setLayout(new BorderLayout());
         this.setBackground(color);
         this.labelTitle = new JLabel("Shop");
+        this.panelShopBottomBar = new PanelShopBottomBar(color, eventsHandler);
         
         tableConfig();
         
@@ -35,6 +37,7 @@ public class PanelShop extends JPanel{
         eventsHandler.addSupplier("getShopTable", () -> returnTable());
         
         this.add(labelTitle, BorderLayout.PAGE_START);
+        this.add(panelShopBottomBar, BorderLayout.PAGE_END);
         this.add(jScrollPane, BorderLayout.CENTER);
     }
     

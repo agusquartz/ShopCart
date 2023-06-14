@@ -60,8 +60,11 @@ public class EventsHandler implements ActionListener{
             case "Shop":
                 refreshTableShop((TableModified)supplier.get("getShopTable").get());
                 break;
-            case "Cart":
-                methods.get("showPanelCart").run();
+            case "Add Movie":
+                methods.get("showPanelAddMovie").run();
+                break;
+            case "Policy":
+                methods.get("showPanelPolicy").run();
                 break;
             case "Summary":
                 refreshTableSummary((TableModified)supplier.get("getSummaryTable").get());
@@ -79,7 +82,7 @@ public class EventsHandler implements ActionListener{
                 }
                 refreshTableSummary(tableSummary);
                 break;
-            case "Users":
+            case "Clients":
                 TableModified tableUsers = (TableModified)supplier.get("getClientsTable").get();
                 refreshTableUsers(tableUsers);
                 break;

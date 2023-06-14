@@ -7,6 +7,6 @@ import javax.swing.JPanel;
  *
  * @author agustin
  */
-public class PanelCart extends JPanel{
+public class PanelPolicy extends JPanel{
     
 }

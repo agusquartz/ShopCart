@@ -26,7 +26,7 @@ public class PanelUsers extends JPanel{
         this.setBackground(color);
         this.setLayout(new BorderLayout());
         this.panelBottomBar = new PanelUsersBottomBar(color, eventsHandler);
-        this.labelTitle = new JLabel("Users");
+        this.labelTitle = new JLabel("Clients");
         
         tableConfig();
         

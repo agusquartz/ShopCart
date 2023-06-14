@@ -46,7 +46,8 @@ public class Window extends JFrame{
         this.add(background, BorderLayout.CENTER);
         
         eventsHandler.addMethods("showPanelShop", () -> showCardPanel("panelShop"));
-        eventsHandler.addMethods("showPanelCart", () -> showCardPanel("panelCart"));
+        eventsHandler.addMethods("showPanelAddMovie", () -> showCardPanel("panelAddMovie"));
+        eventsHandler.addMethods("showPanelPolicy", () -> showCardPanel("panelPolicy"));
         eventsHandler.addMethods("showPanelSummary", () -> showCardPanel("panelSummary"));
         eventsHandler.addMethods("showPanelUsers", () -> showCardPanel("panelUsers"));
         eventsHandler.addMethods("showPanelSettings", () -> showCardPanel("panelSettings"));

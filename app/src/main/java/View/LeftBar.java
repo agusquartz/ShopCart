@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 public class LeftBar extends JPanel{
     private ImageAvatar userIcon;
     private ButtonSquare buttonShop;
-    private ButtonSquare buttonCart;
+    private ButtonSquare buttonRentalPolicy;
     private ButtonSquare buttonSummary;
-    private ButtonSquare buttonUsers;
+    private ButtonSquare buttonClients;
     private ButtonSquare buttonSettings;
     private EventsHandler eventsHandler;
     
@@ -30,29 +30,29 @@ public class LeftBar extends JPanel{
         
         userIcon = new ImageAvatar();
         buttonShop = new ButtonSquare(eventsHandler);
-        buttonCart = new ButtonSquare(eventsHandler);
+        buttonRentalPolicy = new ButtonSquare(eventsHandler);
         buttonSummary = new ButtonSquare(eventsHandler);
-        buttonUsers = new ButtonSquare(eventsHandler);
+        buttonClients = new ButtonSquare(eventsHandler);
         buttonSettings = new ButtonSquare(eventsHandler);
         
         userIcon.setPreferredSize(new Dimension(120, 120));
         buttonShop.setPreferredSize(new Dimension(120, 50));
-        buttonCart.setPreferredSize(new Dimension(120, 50));
+        buttonRentalPolicy.setPreferredSize(new Dimension(120, 50));
         buttonSummary.setPreferredSize(new Dimension(120, 50));
-        buttonUsers.setPreferredSize(new Dimension(120, 50));
+        buttonClients.setPreferredSize(new Dimension(120, 50));
         buttonSettings.setPreferredSize(new Dimension(120, 50));
         
         buttonShop.setText("Shop");
-        buttonCart.setText("Cart");
+        buttonRentalPolicy.setText("Policy");
         buttonSummary.setText("Summary");
-        buttonUsers.setText("Users");
+        buttonClients.setText("Clients");
         buttonSettings.setText("Settings");
        
         this.add(userIcon);
         this.add(buttonShop);
-        this.add(buttonCart);
+        this.add(buttonRentalPolicy);
         this.add(buttonSummary);
-        this.add(buttonUsers);
+        this.add(buttonClients);
         this.add(buttonSettings);
     }
 }
