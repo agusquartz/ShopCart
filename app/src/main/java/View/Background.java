@@ -13,6 +13,7 @@ public class Background extends JPanel{
     private PanelShop panelShop;
     private PanelShopAddMovie panelShopAddMovie;
     private PanelMoreInfo panelMoreInfo;
+    private PanelCart panelCart;
     private PanelPolicy panelPolicy;
     private PanelSummary panelSummary;
     private PanelUsers panelUsers;
@@ -28,6 +29,7 @@ public class Background extends JPanel{
         panelShop = new PanelShop(color);
         panelShopAddMovie = new PanelShopAddMovie("Add Movie", new Color(204, 204, 204));
         panelMoreInfo = new PanelMoreInfo();
+        panelCart = new PanelCart(color);
         
         panelPolicy = new PanelPolicy();
         
@@ -45,6 +47,7 @@ public class Background extends JPanel{
         this.add(panelShop, "panelShop");
         this.add(panelShopAddMovie, "panelAddMovie");
         this.add(panelMoreInfo, "panelMoreInfo");
+        this.add(panelCart, "panelCart");
         this.add(panelPolicy, "panelPolicy");
         this.add(panelSummary, "panelSummary");
         this.add(panelUsers, "panelUsers");

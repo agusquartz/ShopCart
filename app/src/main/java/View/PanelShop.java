@@ -62,8 +62,6 @@ public class PanelShop extends JPanel{
         
         setAllAlignmentCenter(5, tableModified);
         
-//        tableModified.setColumnWidth(2, 100);
-        
     }
     
     private void setAllAlignmentCenter(int columns, TableModified table){

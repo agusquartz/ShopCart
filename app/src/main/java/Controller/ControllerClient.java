@@ -101,4 +101,20 @@ public class ControllerClient {
         });
     }
     
+    /**
+     * Clean the Clients Table that's in the cart panel, then add the clients
+     * that are available to rent in the table
+     * @param table table  the table where data is load.
+     */
+    public void loadAvailableClients(TableModified table){
+        TreeMap<String, Client> clients = REPOSITORY.getClients();
+        mode = (DefaultTableModel) table.getModel();
+        mode.setRowCount(0);
+        clients.forEach((key, value) -> {
+            if(value.isCanRent()){
+                mode.addRow(new Object[]{value.getName(), value.getIdNumber()});
+            }
+        });
+    }
+    
 }

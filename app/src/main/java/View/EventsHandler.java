@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -76,6 +77,33 @@ public class EventsHandler implements ActionListener{
                 controllerMovies.showMovieInfo((PanelMoreInfo)supplier.get("getPanelMoreInfo").get(), modelMoreInfo.getValueAt(shopTable.getSelectedRow(), 0).toString());
                 methods.get("showPanelMoreInfo").run();
                 break;
+            case "Rent":
+                TableModified shopTable1 = (TableModified) supplier.get("getShopTable").get();
+                if(shopTable1.getSelectedRow() >= 0){
+                    DefaultTableModel modelMoreInfo1 = (DefaultTableModel)shopTable1.getModel();
+                    ((JTextField)supplier.get("getCartTextField").get())
+                            .setText((String)modelMoreInfo1
+                                    .getValueAt(
+                                            shopTable1.getSelectedRow(), 0));
+                    controllerClient.loadAvailableClients(
+                            (TableModified)supplier.get("getCartTable").get());
+                    methods.get("showPanelCart").run();
+                }
+                break;
+            case "Proceed":
+                TableModified cartTable = (TableModified) supplier.get("getCartTable").get();
+                if(cartTable.getSelectedRow() >= 0){
+                    ((JLabel)supplier.get("getAdviceLabel").get()).setText("");
+                    DefaultTableModel modelCart = (DefaultTableModel)cartTable.getModel();
+                    String movieName = ((JTextField)supplier.get("getCartTextField").get()).getText();
+                    String clientId = (String) modelCart.getValueAt(cartTable.getSelectedRow(), 1);
+                    controllerSummary.createNewAction(clientId, movieName);
+                    refreshTableShop((TableModified)supplier.get("getShopTable").get());
+                }
+                else{
+                    ((JLabel)supplier.get("getAdviceLabel").get()).setText("Select a Client");
+                }
+                break;
             case "Policy":
                 methods.get("showPanelPolicy").run();
                 break;
@@ -87,7 +115,7 @@ public class EventsHandler implements ActionListener{
                 TableModified tableSummary = (TableModified)supplier.get("getSummaryTable").get();
                 DefaultTableModel modelSummary = (DefaultTableModel)tableSummary.getModel();
                 if((modelSummary.getValueAt(tableSummary.getSelectedRow(), 1).toString()).equals("false")){
-                    controllerSummary.modifyStatus(
+                    controllerSummary.returnAndModifyStatus(
                             modelSummary.getValueAt(
                                 tableSummary.getSelectedRow(), 0).toString(),
                             modelSummary.getValueAt(

@@ -64,7 +64,7 @@ public class ControllerSummary {
      * @param clientID client's ID number
      * @param movieName movie's name
      */
-    public void modifyStatus(String clientID, String movieName){
+    public void returnAndModifyStatus(String clientID, String movieName){
         HashMap<String, ArrayList<Action>> actions = REPOSITORY.getActions();
         actions.get(clientID).forEach(action -> {
             if(action.getName().equals(movieName) && !(action.isAvailable())){
@@ -74,6 +74,32 @@ public class ControllerSummary {
                 controllerClient.searchClient(clientID).setCanRent(true);
             }
         });
+    }
+    
+    /**
+     * Modifies the status of the product to not available, the client can't rent
+     * and the rented date is saved to the summary
+     * @param clientID client's ID number
+     * @param movieName movie's name
+     */
+    public void createNewAction(String clientID, String movieName){
+        HashMap<String, ArrayList<Action>> actions = REPOSITORY.getActions();
+        Action action = new Action(
+                movieName, controllerMovies.searchMovie(movieName).getPrice(), clientID,
+                DateTimeFormatter.ofPattern("dd-MM-YYYY").format(LocalDate.now()),
+                "null", "false");
+        
+        controllerMovies.searchMovie(movieName).setAvailable(false);
+        controllerClient.searchClient(clientID).setCanRent(false);
+        
+        if(actions.containsKey(clientID)){
+            actions.get(clientID).add(action);
+        }
+        else{
+            actions.put(clientID, new ArrayList(){{
+                add(action);
+            }});
+        }
     }
     
     /**
