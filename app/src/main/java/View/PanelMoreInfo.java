@@ -19,6 +19,4 @@ public class PanelMoreInfo {
     public PanelMoreInfo(){
         
     }
-    
-    public void
 }
