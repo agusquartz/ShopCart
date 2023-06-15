@@ -25,14 +25,6 @@ public class ControllerMovies {
         
     }
     
-    /**
-     * This method search movies with .
-     * @param idNumber
-     * @return 
-     */
-    public Movie searchMovie(String idNumber){
-        return this.REPOSITORY.getMovies().get(idNumber);
-    }  
      /**
      * This method creates a new movie and add it in the repository
      * @param panel The panel where the data is obtained
@@ -44,10 +36,10 @@ public class ControllerMovies {
         REPOSITORY.getMovies().put(movie.getName(), movie);
     }
     
-    /**
-     * 
-     * @return 
-     */
+    public Movie searchMovie(String movieName){
+        return this.REPOSITORY.getMovies().get(movieName);
+    }
+    
     public int amountOfMovies(){
         return this.REPOSITORY.getMovies().size();
     }
