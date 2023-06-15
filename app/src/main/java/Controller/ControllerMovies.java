@@ -4,6 +4,7 @@ package Controller;
 import Repository.Movie;
 import Repository.Repository;
 import View.EventsHandler;
+import View.PanelShopAddMovie;
 import View.TableModified;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +32,16 @@ public class ControllerMovies {
      */
     public Movie searchMovie(String idNumber){
         return this.REPOSITORY.getMovies().get(idNumber);
+    }  
+     /**
+     * This method creates a new movie and add it in the repository
+     * @param panel The panel where the data is obtained
+     */
+    public void createNewMovie(PanelShopAddMovie panel){
+        Movie movie = new Movie(panel.getTextFieldName(), panel.getTextFieldReleaseYear()
+        , panel.getTextFieldDirector(), panel.getTextFieldGenre(), panel.getTextFieldDescription()
+        , panel.getTextFieldPrice(), "");
+        REPOSITORY.getMovies().put(movie.getName(), movie);
     }
     
     /**
