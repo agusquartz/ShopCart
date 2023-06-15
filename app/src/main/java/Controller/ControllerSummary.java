@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import Repository.Repository;
 import View.EventsHandler;
 import View.TableModified;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +38,10 @@ public class ControllerSummary {
      */
     public void saveSummary(){
         REPOSITORY.saveActions();
+    }
+    
+    public JScrollPane getReadme(){
+        return REPOSITORY.getReadme();
     }
     
     /**

@@ -59,6 +59,7 @@ public class Background extends JPanel{
         eventsHandler.addSupplier("getPanelUserCreate", () -> getPanelUserCreate());
         eventsHandler.addSupplier("getPanelShopAddMovie", () -> getPanelShopAddMovie());
         eventsHandler.addSupplier("getPanelMoreInfo", () -> getPanelMoreInfo());
+        eventsHandler.addSupplier("getPanelPolicy", () -> getPanelPolicy());
     }
     
     /**
@@ -67,6 +68,14 @@ public class Background extends JPanel{
      */
     private PanelUserEdit getPanelUserEdit(){
         return panelUserEdit;
+    }
+    
+    /**
+     * Returns the panel where the program information is showed.
+     * @return 
+     */
+    private PanelPolicy getPanelPolicy(){
+        return panelPolicy;
     }
     
     /**

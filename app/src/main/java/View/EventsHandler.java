@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -105,6 +106,7 @@ public class EventsHandler implements ActionListener{
                 }
                 break;
             case "Policy":
+                ((JPanel)supplier.get("getPanelPolicy").get()).add(controllerSummary.getReadme());
                 methods.get("showPanelPolicy").run();
                 break;
             case "Summary":

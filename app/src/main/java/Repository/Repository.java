@@ -4,6 +4,7 @@ package Repository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
+import javax.swing.JScrollPane;
 
 /**
  *This class is the place where all data is stored.
@@ -11,7 +12,7 @@ import java.util.TreeMap;
  */
 public class Repository {
     private static Repository instance;
-    
+    private MarkDownReader markDownReader;
     private JSONClients jsonClients;
     private JSONMovies jsonMovies;
     private JSONSummary jsonSummary;
@@ -23,6 +24,7 @@ public class Repository {
      *Main Constructor  
      */
     private Repository(){
+        this.markDownReader = new MarkDownReader();
         this.jsonClients = JSONClients.getInstance();
         this.jsonMovies = JSONMovies.getInstance();
         this.jsonSummary = JSONSummary.getInstance();
@@ -49,6 +51,9 @@ public class Repository {
         return instance;
     }
     
+    public JScrollPane getReadme(){
+        return markDownReader.getREADME();
+    }
 
     public HashMap<String, ArrayList<Action>> getActions() {
         return actions;
