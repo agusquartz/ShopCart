@@ -36,10 +36,19 @@ public class ControllerMovies {
         REPOSITORY.getMovies().put(movie.getName(), movie);
     }
     
+    /**
+     * This method search a movie with it's Name
+     * @param movieName Name of the movie 
+     * @return Movie
+     */
     public Movie searchMovie(String movieName){
         return this.REPOSITORY.getMovies().get(movieName);
     }
     
+    /**
+     * This method returns how many movies are in the system.
+     * @return 
+     */
     public int amountOfMovies(){
         return this.REPOSITORY.getMovies().size();
     }
