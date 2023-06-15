@@ -4,6 +4,7 @@ package Controller;
 import Repository.Movie;
 import Repository.Repository;
 import View.EventsHandler;
+import View.PanelMoreInfo;
 import View.PanelShopAddMovie;
 import View.TableModified;
 import java.util.HashMap;
@@ -77,5 +78,9 @@ public class ControllerMovies {
                 });
             }
         });
+    }
+    
+    public void showMovieInfo(PanelMoreInfo panel, String movieName){
+        panel.showData(REPOSITORY.searchMovie(movieName));
     }
 }

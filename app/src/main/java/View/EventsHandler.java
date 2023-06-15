@@ -18,10 +18,9 @@ import javax.swing.table.DefaultTableModel;
  * @author agustin
  */
 public class EventsHandler implements ActionListener{
-    
+    private static EventsHandler instance;
     private HashMap<String, Runnable> methods;
     private HashMap<String, Supplier<Object>> supplier;
-    private static EventsHandler instance;
     private ControllerClient controllerClient;
     private ControllerSummary controllerSummary;
     private ControllerMovies controllerMovies;
@@ -70,6 +69,12 @@ public class EventsHandler implements ActionListener{
                 PanelShopAddMovie panelShopAddMovie = (PanelShopAddMovie)supplier.get("getPanelShopAddMovie").get();
                 controllerMovies.createNewMovie(panelShopAddMovie);
                 refreshTableShop((TableModified)supplier.get("getShopTable").get());
+                break;
+            case "More Info":
+                TableModified shopTable = (TableModified) supplier.get("getShopTable").get();
+                DefaultTableModel modelMoreInfo = (DefaultTableModel)shopTable.getModel();
+                controllerMovies.showMovieInfo((PanelMoreInfo)supplier.get("getPanelMoreInfo").get(), modelMoreInfo.getValueAt(shopTable.getSelectedRow(), 0).toString());
+                methods.get("showPanelMoreInfo").run();
                 break;
             case "Policy":
                 methods.get("showPanelPolicy").run();

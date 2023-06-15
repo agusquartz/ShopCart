@@ -3,9 +3,6 @@ package View;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -15,6 +12,7 @@ import javax.swing.JPanel;
 public class Background extends JPanel{
     private PanelShop panelShop;
     private PanelShopAddMovie panelShopAddMovie;
+    private PanelMoreInfo panelMoreInfo;
     private PanelPolicy panelPolicy;
     private PanelSummary panelSummary;
     private PanelUsers panelUsers;
@@ -29,6 +27,7 @@ public class Background extends JPanel{
         
         panelShop = new PanelShop(color);
         panelShopAddMovie = new PanelShopAddMovie("Add Movie", new Color(204, 204, 204));
+        panelMoreInfo = new PanelMoreInfo();
         
         panelPolicy = new PanelPolicy();
         
@@ -45,6 +44,7 @@ public class Background extends JPanel{
         this.add(panelSettings, "panelSettings");
         this.add(panelShop, "panelShop");
         this.add(panelShopAddMovie, "panelAddMovie");
+        this.add(panelMoreInfo, "panelMoreInfo");
         this.add(panelPolicy, "panelPolicy");
         this.add(panelSummary, "panelSummary");
         this.add(panelUsers, "panelUsers");
@@ -55,6 +55,7 @@ public class Background extends JPanel{
         eventsHandler.addSupplier("getPanelUserEdit", () -> getPanelUserEdit());
         eventsHandler.addSupplier("getPanelUserCreate", () -> getPanelUserCreate());
         eventsHandler.addSupplier("getPanelShopAddMovie", () -> getPanelShopAddMovie());
+        eventsHandler.addSupplier("getPanelMoreInfo", () -> getPanelMoreInfo());
     }
     
     /**
@@ -79,5 +80,9 @@ public class Background extends JPanel{
      */
     private PanelShopAddMovie getPanelShopAddMovie(){
         return panelShopAddMovie;
+    }
+    
+    private PanelMoreInfo getPanelMoreInfo(){
+        return panelMoreInfo;
     }
 }
