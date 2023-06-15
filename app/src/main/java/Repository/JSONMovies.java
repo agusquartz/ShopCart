@@ -7,7 +7,7 @@ import java.util.HashMap;
 import org.json.simple.JSONObject;
 
 /**
- *
+ *This class is Read and write System of Movies
  * @author agustin
  */
 public class JSONMovies extends JSONBase{
@@ -26,11 +26,18 @@ public class JSONMovies extends JSONBase{
             throw new RuntimeException("Exception occurred in creating JSONMovies singleton instance");
         }
     }
-    
+    /**
+     *  Returns one and unique instance of the class
+     * @return instance
+     */
     public static JSONMovies getInstance(){
         return instance;
     }
-    
+    /**
+     * Load the movies in the repository
+     * @param movies the TreeMap where new clients are gonna be stored.
+     * @param jsonMovies the manager of the movies.JSON file.
+     */
     public void loadMovies(HashMap movies, JSONMovies jsonMovies){
         JSONObject jsonObject = jsonMovies.getJsonObject();
         this.movies = movies;
@@ -53,6 +60,9 @@ public class JSONMovies extends JSONBase{
     }
     
     @Override
+    /**
+     * Save the clients in Movie.JSON file
+     */
     public void saveToJSONFile() {
         HashMap<String, HashMap<String, String>> map = new HashMap();
         

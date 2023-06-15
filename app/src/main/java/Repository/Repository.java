@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
- *
+ *This class is the place where all data is stored.
  * @author agustin
  */
 public class Repository {
@@ -19,6 +19,9 @@ public class Repository {
     private HashMap<String, Movie> movies;
     private HashMap<String, ArrayList<Action>> actions;
     
+    /**
+     *Main Constructor  
+     */
     private Repository(){
         this.jsonClients = JSONClients.getInstance();
         this.jsonMovies = JSONMovies.getInstance();
@@ -45,6 +48,7 @@ public class Repository {
     public static Repository getInstance(){
         return instance;
     }
+    
 
     public HashMap<String, ArrayList<Action>> getActions() {
         return actions;
