@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import org.json.simple.JSONObject;
 
 /**
- *
+ *This class is Read and write System of clients
  * @author agustin
  */
 public class JSONClients extends JSONBase{
@@ -28,11 +28,18 @@ public class JSONClients extends JSONBase{
             throw new RuntimeException("Exception occurred in creating JSONUsers singleton instance");
         }
     }
-    
+    /**
+     *  Returns one and unique instance of the class
+     * @return instance
+     */
     public static JSONClients getInstance(){
         return instance;
     }
-    
+    /**
+     * Load the clients in the repository
+     * @param clients the TreeMap where new clients are gonna be stored
+     * @param jsonClients the manager of the client.JSON file
+     */
     public void loadClients(TreeMap clients, JSONClients jsonClients){
         JSONObject jsonObject = jsonClients.getJsonObject();
         this.clients = clients;
@@ -55,6 +62,9 @@ public class JSONClients extends JSONBase{
     }
 
     @Override
+    /**
+     * Save the clients in Client.JSON file
+     */
     public void saveToJSONFile() {
         HashMap<String, HashMap<String, String>> map = new HashMap();
         

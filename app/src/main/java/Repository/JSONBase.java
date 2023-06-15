@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * This class is the JSON base Systems.
  * @author agustin
  */
 public abstract class JSONBase {
@@ -24,6 +24,11 @@ public abstract class JSONBase {
     private Object object;
     private JSONObject jsonObject;
     
+    
+    /**
+     * Main Constructor
+     * @param fileName name of the file
+     */
     protected JSONBase(String fileName){
         this.FILENAME = fileName;
         this.jsonParser = new JSONParser();
@@ -42,6 +47,9 @@ public abstract class JSONBase {
     
     public abstract void saveToJSONFile();
     
+    /**
+     * Read the JSON file and convert it to JSON OBJECT.
+     */
     private void loadFromJSONFile(){
         try {
             fileReader = new FileReader(REPOSITORYPATH + FILENAME);

@@ -13,7 +13,8 @@ import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *This class contains the control of rents, as save,load, modify  and calculate the money earned.
+ *This class contains the control of rents, as save,load, modify 
+ * and calculate the money earned.
  * @author agustin
  */
 public class ControllerSummary {

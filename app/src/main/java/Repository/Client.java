@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
+ *This class represent a person who buys from shop
  * @author agustin
  */
 public class Client implements Comparable<Client>{
@@ -18,10 +18,27 @@ public class Client implements Comparable<Client>{
     private String city;
     private final String IDNUMBER;
     
+    /**
+     * Constructor with less parameter
+     * @param idNumber Client's ID Number 
+     * @param name Client's name
+     * @param surname Client's Surname
+     * @param age Client's age
+     * @param email Client's email
+     */
     public Client(String idNumber, String name, String surname, String age, String email){
         this(idNumber, name, surname, age, email, "", "");
     }
-    
+    /**
+     * Main Constructor
+     * @param idNumber Client's ID Number 
+     * @param name Client's name
+     * @param surname Client's Surname
+     * @param age Client's age
+     * @param email Client's email
+     * @param phoneNumber Client's phoneNumber
+     * @param city  Client's city
+     */
     public Client(String idNumber, String name, String surname, String age, String email, String phoneNumber, String city){
         this.IDNUMBER = idNumber;
         this.name = name;
@@ -33,10 +50,19 @@ public class Client implements Comparable<Client>{
         this.canRent = true;
     }
 
+    /**
+     * This Boolean method returns if a client can rent a movie again
+     * @return Boolean
+     */
     public boolean isCanRent() {
         return canRent;
     }
 
+    /**
+     * 
+     * @param canRent 
+     * @return Client 
+     */
     public Client setCanRent(boolean canRent) {
         this.canRent = canRent;
         return this;
@@ -100,6 +126,10 @@ public class Client implements Comparable<Client>{
         return city;
     }
     
+    /**
+     * This method convert client's  data that are gonna be saved in hashMap 
+     * @return 
+     */
     public HashMap toHashMap(){
         return new HashMap<String, String>(){{
             put("name", name);
@@ -119,6 +149,9 @@ public class Client implements Comparable<Client>{
 
     
     @Override
+    /**
+     * Compare client by their ID number.
+     */
     public int compareTo(Client otherClient) {
         return this.getIdNumber().compareTo(otherClient.getIdNumber());
     }

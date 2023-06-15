@@ -10,7 +10,7 @@ import java.util.TreeMap;
 import org.json.simple.JSONObject;
 
 /**
- *
+ *This class is Read and write System of Summary
  * @author agustin
  */
 public class JSONSummary extends JSONBase {
@@ -31,11 +31,18 @@ public class JSONSummary extends JSONBase {
             throw new RuntimeException("Exception occurred in creating JSONSummary singleton instance");
         }
     }
-    
+    /**
+     *  Returns one and unique instance of the class
+     * @return instance
+     */
     public static JSONSummary getInstance(){
         return instance;
     }
-    
+    /**
+     * Load the Summary in the repository
+     * @param actions the TreeMap where new actions are gonna be stored.
+     * @param jsonSummary the manager of the summary.JSON file.
+     */
     public void loadActions(HashMap actions, JSONSummary jsonSummary){
         JSONObject jsonObject = jsonSummary.getJsonObject();
         this.actions = actions;
@@ -60,7 +67,11 @@ public class JSONSummary extends JSONBase {
         
         actionList.forEach(e -> ( (ArrayList)actions.get( ((Action) e).getRentedBy() ) ).add(e) );
     }
-    
+    /**
+     * Configure the clients and movies from repository according to the summary file
+     * @param clients clients list from repository
+     * @param movies  movies list from repository
+     */
     public void config(TreeMap<String, Client> clients, HashMap<String, Movie> movies){
         actionList.forEach(e -> {
             if(!(e.isAvailable())){
@@ -71,6 +82,9 @@ public class JSONSummary extends JSONBase {
     }
     
     @Override
+    /**
+     * Save the clients in Summary.JSON file
+     */
     public void saveToJSONFile() {
         HashMap<String, HashMap<String, String>> map = new HashMap();
         

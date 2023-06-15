@@ -40,7 +40,7 @@ public class ControllerMovies {
     /**
      * This method search a movie with it's Name
      * @param movieName Name of the movie 
-     * @return Movie
+     * @return Movie 
      */
     public Movie searchMovie(String movieName){
         return this.REPOSITORY.getMovies().get(movieName);
@@ -48,7 +48,7 @@ public class ControllerMovies {
     
     /**
      * This method returns how many movies are in the system.
-     * @return 
+     * @return int
      */
     public int amountOfMovies(){
         return this.REPOSITORY.getMovies().size();

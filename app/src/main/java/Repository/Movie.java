@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 
 /**
- *
+ *This class represent a movie product
  * @author agustin
  */
 public class Movie implements Comparable<Movie>{
@@ -18,11 +18,30 @@ public class Movie implements Comparable<Movie>{
     private String photoName;
     private boolean available;
     
+    
+    /**
+     * Constructor with less parameter
+     * @param name movie's name
+     * @param releaseYear movie's release
+     * @param director movie's director
+     * @param genre movie's genre
+     * @param price movie's  price
+     */
     public Movie(String name, String releaseYear, String director,
             String genre, String price){
         this(name, releaseYear, director, genre, "", price, "");
     }
     
+    /**
+     *  Main Constructor
+     * @param name movie's name
+     * @param releaseYear movie's release 
+     * @param director movie's director
+     * @param genre movie's genre
+     * @param description movie's description
+     * @param price movie's  price
+     * @param photoName movie's photo name 
+     */
     public Movie(String name, String releaseYear, String director,
             String genre, String description, String price, String photoName){
         this.name = name;
@@ -106,7 +125,10 @@ public class Movie implements Comparable<Movie>{
     public boolean isAvailable() {
         return available;
     }
-    
+    /**
+     * This method convert movie's  data that are gonna be saved in hashMap 
+     * @return 
+     */
     public HashMap toHashMap(){
         return new HashMap<String, String>(){{
             put("name", name);
@@ -120,6 +142,9 @@ public class Movie implements Comparable<Movie>{
     }
 
     @Override
+    /**
+     * Compare movies by their names
+     */
     public int compareTo(Movie otherMovie) {
         return this.getName().compareTo(otherMovie.getName());
     }
