@@ -11,7 +11,9 @@ import java.util.TreeMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ *This class contains the Control of clients, as search,amount,edit,create,
+ *delete,save and load the client.
+ * 
  * @author agustin
  */
 public class ControllerClient {
@@ -19,13 +21,16 @@ public class ControllerClient {
     private EventsHandler eventsHandler = EventsHandler.getInstance();
     private DefaultTableModel mode;
     
+    /**
+     * Main Constructor
+     */
     public ControllerClient(){
     }
     
     /**
      * Search and returns a client
-     * @param idNumber
-     * @return 
+     * @param idNumber ID Number of client
+     * @return Client
      */
     public Client searchClient(String idNumber){
         return this.REPOSITORY.getClients().get(idNumber);
@@ -33,7 +38,7 @@ public class ControllerClient {
     
     /**
      * Returns how many clients there are in the system
-     * @return 
+     * @return int
      */
     public int amountOfClients(){
         return this.REPOSITORY.getClients().size();
@@ -41,7 +46,7 @@ public class ControllerClient {
     
     /**
      * Edit a client's data
-     * @param panel 
+     * @param panel Panel where edit the clients
      */
     public void editClient(PanelUserEdit panel){
         Client client = REPOSITORY.searchClient(panel.getIDNumber());
@@ -55,7 +60,7 @@ public class ControllerClient {
     
     /**
      * Creates a new client
-     * @param panel 
+     * @param panel Panel where create the clients
      */
     public void createClient(PanelUserCreate panel){
         Client client = new Client(panel.getIDNumber(), panel.getName(),
@@ -66,7 +71,7 @@ public class ControllerClient {
     
     /**
      * Removes a client from the system
-     * @param idNumber 
+     * @param idNumber  ID Number of client
      */
     public void deleteClient(String idNumber){
         REPOSITORY.getClients().remove(idNumber);
@@ -81,7 +86,7 @@ public class ControllerClient {
     
     /**
      * Clean the Clients Table and Add all the clients with their Data in it
-     * @param table 
+     * @param table table  the table where data is load.
      */
     public void loadClients(TableModified table){
         TreeMap<String, Client> clients = REPOSITORY.getClients();

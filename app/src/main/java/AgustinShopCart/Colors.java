@@ -2,7 +2,7 @@
 package AgustinShopCart;
 
 /**
- *
+ *This class contains the colours of ShopCart.
  * @author agustin
  */
 public enum Colors {
