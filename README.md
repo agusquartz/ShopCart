@@ -1,6 +1,10 @@
 <h1 align="center"> ShopCart </h1>
 <p align="center">
-   <img src="https://img.shields.io/badge/STATUS-%20FINISHED-green">
+   <img src="https://img.shields.io/badge/STATUS-%20FINISHED-blue">
+   <img src="https://img.shields.io/badge/Maintained%3F-NO-red.svg">
+   <img src="https://img.shields.io/badge/OS-%20Linux-green">
+   <img src="https://img.shields.io/badge/OS-%20Windows-green">
+   <img src="https://img.shields.io/badge/OS-%20MacOS-green">
    </p>
    
 # DVD Shopping Cart Program
