@@ -21,7 +21,9 @@ This is a Java program that simulates a shopping cart for DVDs. It allows to add
 - Run the App.java class to start the program.
 
 # Program Rental Policy
-- Each client can rent just one DVD at time.
+- A client that've rented a DVD can have it as long as it want.
+- Each client can rent just one DVD at time, it must return the last rented before can rent again.
+- Each Movie has it's own rent cost.
 
 # Requirements
 - JDK 17
