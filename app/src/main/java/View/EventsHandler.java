@@ -63,6 +63,14 @@ public class EventsHandler implements ActionListener{
             case "Add Movie":
                 methods.get("showPanelAddMovie").run();
                 break;
+            case "Back":
+                refreshTableShop((TableModified)supplier.get("getShopTable").get());
+                break;
+            case "Add New":
+                PanelShopAddMovie panelShopAddMovie = (PanelShopAddMovie)supplier.get("getPanelShopAddMovie").get();
+                controllerMovies.createNewMovie(panelShopAddMovie);
+                refreshTableShop((TableModified)supplier.get("getShopTable").get());
+                break;
             case "Policy":
                 methods.get("showPanelPolicy").run();
                 break;

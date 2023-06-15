@@ -44,6 +44,30 @@ public class PanelShopAddMovie extends JPanel{
         gbc.insets = new Insets(5, 5, 5, 5);        
         build(title, background);
     }
+
+    public String getTextFieldName() {
+        return textFieldName.getText();
+    }
+
+    public String getTextFieldReleaseYear() {
+        return textFieldReleaseYear.getText();
+    }
+
+    public String getTextFieldDirector() {
+        return textFieldDirector.getText();
+    }
+
+    public String getTextFieldGenre() {
+        return textFieldGenre.getText();
+    }
+
+    public String getTextFieldDescription() {
+        return textFieldDescription.getText();
+    }
+
+    public String getTextFieldPrice() {
+        return textFieldPrice.getText();
+    }
     
     /**
      * Method in charge of build and add all the elements of the panel
@@ -60,7 +84,7 @@ public class PanelShopAddMovie extends JPanel{
         this.add(buttonCancel, gbc);
         
         buttonContinue = new ButtonSquare(eventsHandler);
-        buttonContinue.setText("Add Movie");
+        buttonContinue.setText("Add New");
         buttonContinue.setPreferredSize(TEXTFIELDDIMENSION);
         gbc.gridx = 1;
         gbc.gridy = 7;

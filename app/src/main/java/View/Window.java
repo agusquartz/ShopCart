@@ -47,6 +47,7 @@ public class Window extends JFrame{
         
         eventsHandler.addMethods("showPanelShop", () -> showCardPanel("panelShop"));
         eventsHandler.addMethods("showPanelAddMovie", () -> showCardPanel("panelAddMovie"));
+        eventsHandler.addMethods("showPanelMoreInfo", () -> showCardPanel("panelMoreInfo"));
         eventsHandler.addMethods("showPanelPolicy", () -> showCardPanel("panelPolicy"));
         eventsHandler.addMethods("showPanelSummary", () -> showCardPanel("panelSummary"));
         eventsHandler.addMethods("showPanelUsers", () -> showCardPanel("panelUsers"));

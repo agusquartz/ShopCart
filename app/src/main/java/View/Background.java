@@ -54,6 +54,7 @@ public class Background extends JPanel{
         
         eventsHandler.addSupplier("getPanelUserEdit", () -> getPanelUserEdit());
         eventsHandler.addSupplier("getPanelUserCreate", () -> getPanelUserCreate());
+        eventsHandler.addSupplier("getPanelShopAddMovie", () -> getPanelShopAddMovie());
     }
     
     /**
@@ -70,5 +71,13 @@ public class Background extends JPanel{
      */
     private PanelUserCreate getPanelUserCreate(){
         return panelUserCreate;
+    }
+    
+    /**
+     * Returns the panel where you can add a new movie
+     * @return 
+     */
+    private PanelShopAddMovie getPanelShopAddMovie(){
+        return panelShopAddMovie;
     }
 }
