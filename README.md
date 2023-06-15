@@ -1,4 +1,5 @@
 <h1 align="center"> ShopCart </h1>
+<p align="center"><i>"If it compiles, it's good; if it boots up, it's perfect." (Linus Torvalds)</i></p>
 <p align="center">
    <img src="https://img.shields.io/badge/STATUS-%20FINISHED-blue">
    <img src="https://img.shields.io/badge/Maintained%3F-NO-red.svg">
