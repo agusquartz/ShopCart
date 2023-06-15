@@ -16,8 +16,8 @@ This is a Java program that simulates a shopping cart for DVDs. It allows to add
 - `DataBase` All the data from clients, DVDs and the summary can easily be stored and transported anywhere into .json format.
 
 # Usage
-- Excecute Graddle Scripts as priming build.
-- Compile the proyect if necessary.
+- Execute Graddle Scripts as priming build.
+- Compile the project if necessary.
 - Run the App.java class to start the program.
 
 # Program Rental Policy
