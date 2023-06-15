@@ -33,13 +33,8 @@ public class ControllerMovies {
         REPOSITORY.getMovies().put(movie.getName(), movie);
     }
     
-    /**
-     * Search a movie in the repository and returns it.
-     * @param name The name of the movie.
-     * @return Movie
-     */
-    public Movie searchMovie(String name){
-        return this.REPOSITORY.getMovies().get(name);
+    public Movie searchMovie(String movieName){
+        return this.REPOSITORY.getMovies().get(movieName);
     }
     
     public int amountOfMovies(){
