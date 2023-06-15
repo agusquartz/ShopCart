@@ -13,6 +13,7 @@ This is a Java program that simulates a shopping cart for DVDs. It allows to add
 - `Add Clients` New clients can be created and added to the system.
 - `Edit Clients` Clients information are easily editable except by the id number.
 - `Return DVDs` The program count with a easy system to return DVDs.
+- `DataBase` All the data from clients, DVDs and the summary can easily be stored and transported anywhere into .json format.
 
 # Usage
 - Excecute Graddle Scripts as priming build.
